@@ -147,8 +147,8 @@ export async function getBuyTx(solanaConnection: Connection, wallet: Keypair, ba
 
     const baseDecimal = baseInfo.decimals
 
-    // const baseToken = new Token(TOKEN_PROGRAM_ID, baseMint, baseDecimal)
-    // const quoteToken = new Token(TOKEN_PROGRAM_ID, quoteMint, 9)
+    const baseToken = new Token(TOKEN_PROGRAM_ID, baseMint, baseDecimal)
+    const quoteToken = new Token(TOKEN_PROGRAM_ID, quoteMint, 9)
 
     const quoteTokenAmount = new TokenAmount(quoteToken, Math.floor(amount))
     const slippage = new Percent(100, 100)
