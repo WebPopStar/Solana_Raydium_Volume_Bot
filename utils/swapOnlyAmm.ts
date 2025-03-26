@@ -94,8 +94,8 @@ async function swapOnlyAmm(connection: Connection, input: TestTxInputInfo) {
 
 export async function formatAmmKeysById(connection: Connection, id: string): Promise<ApiPoolInfoV4> {
   const account = await connection.getAccountInfo(new PublicKey(id))
-  // if (account === null) throw Error(' get id info error ')
-  // const info = LIQUIDITY_STATE_LAYOUT_V4.decode(account.data)
+  if (account === null) throw Error(' get id info error ')
+  const info = LIQUIDITY_STATE_LAYOUT_V4.decode(account.data)
 
   const marketId = info.marketId
   const marketAccount = await connection.getAccountInfo(marketId)
