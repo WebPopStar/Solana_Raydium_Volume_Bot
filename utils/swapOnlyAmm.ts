@@ -130,8 +130,8 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
     marketAuthority: Market.getAssociatedAuthority({ programId: info.marketProgramId, marketId: info.marketId }).publicKey.toString(),
     marketBaseVault: marketInfo.baseVault.toString(),
     marketQuoteVault: marketInfo.quoteVault.toString(),
-    marketBids: marketInfo.bids.toString(),
-    marketAsks: marketInfo.asks.toString(),
+    // marketBids: marketInfo.bids.toString(),
+    // marketAsks: marketInfo.asks.toString(),
     marketEventQueue: marketInfo.eventQueue.toString(),
     lookupTableAccount: PublicKey.default.toString()
   }
