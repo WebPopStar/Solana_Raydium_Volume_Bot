@@ -60,8 +60,8 @@ async function getWalletTokenAccount(connection: Connection, wallet: PublicKey):
 async function swapOnlyAmm(connection: Connection, input: TestTxInputInfo) {
   // -------- pre-action: get pool info --------
   const targetPoolInfo = await formatAmmKeysById(connection, input.targetPool)
-  assert(targetPoolInfo, 'cannot find the target pool')
-  const poolKeys = jsonInfo2PoolKeys(targetPoolInfo) as LiquidityPoolKeys
+  // assert(targetPoolInfo, 'cannot find the target pool')
+  // const poolKeys = jsonInfo2PoolKeys(targetPoolInfo) as LiquidityPoolKeys
 
   // -------- step 1: coumpute amount out --------
   const { amountOut, minAmountOut } = Liquidity.computeAmountOut({
