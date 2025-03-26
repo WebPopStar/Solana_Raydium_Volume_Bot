@@ -40,9 +40,9 @@ type TestTxInputInfo = {
   outputToken: Token
   targetPool: string
   inputTokenAmount: TokenAmount
-  slippage: Percent
-  walletTokenAccounts: WalletTokenAccounts
-  wallet: Keypair
+  // slippage: Percent
+  // walletTokenAccounts: WalletTokenAccounts
+  // wallet: Keypair
 }
 
 async function getWalletTokenAccount(connection: Connection, wallet: PublicKey): Promise<TokenAccount[]> {
