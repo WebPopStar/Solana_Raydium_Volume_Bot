@@ -145,7 +145,7 @@ export async function getBuyTx(solanaConnection: Connection, wallet: Keypair, ba
       return null
     }
 
-    const baseDecimal = baseInfo.decimals
+    // const baseDecimal = baseInfo.decimals
 
     const baseToken = new Token(TOKEN_PROGRAM_ID, baseMint, baseDecimal)
     const quoteToken = new Token(TOKEN_PROGRAM_ID, quoteMint, 9)
