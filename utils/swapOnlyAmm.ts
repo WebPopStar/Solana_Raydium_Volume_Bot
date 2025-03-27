@@ -132,8 +132,8 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
     marketQuoteVault: marketInfo.quoteVault.toString(),
     marketBids: marketInfo.bids.toString(),
     marketAsks: marketInfo.asks.toString(),
-    marketEventQueue: marketInfo.eventQueue.toString(),
-    lookupTableAccount: PublicKey.default.toString()
+    // marketEventQueue: marketInfo.eventQueue.toString(),
+    // lookupTableAccount: PublicKey.default.toString()
   }
 }
 
