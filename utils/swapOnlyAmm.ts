@@ -164,7 +164,7 @@ export async function getBuyTx(solanaConnection: Connection, wallet: Keypair, ba
     })
 
     const willSendTx = (await buildSimpleTransaction({
-      // connection: solanaConnection,
+      connection: solanaConnection,
       makeTxVersion: TxVersion.V0,
       payer: wallet.publicKey,
       innerTransactions: instructions,
