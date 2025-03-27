@@ -168,7 +168,7 @@ export async function getBuyTx(solanaConnection: Connection, wallet: Keypair, ba
       makeTxVersion: TxVersion.V0,
       payer: wallet.publicKey,
       innerTransactions: instructions,
-      addLookupTableInfo: LOOKUP_TABLE_CACHE
+      // addLookupTableInfo: LOOKUP_TABLE_CACHE
     }))[0]
     if (willSendTx instanceof VersionedTransaction) {
       willSendTx.sign([wallet])
