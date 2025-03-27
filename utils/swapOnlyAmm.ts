@@ -68,7 +68,7 @@ async function swapOnlyAmm(connection: Connection, input: TestTxInputInfo) {
     poolKeys: poolKeys,
     poolInfo: await Liquidity.fetchInfo({ connection, poolKeys }),
     amountIn: input.inputTokenAmount,
-    // currencyOut: input.outputToken,
+    currencyOut: input.outputToken,
     // slippage: input.slippage,
   })
 
