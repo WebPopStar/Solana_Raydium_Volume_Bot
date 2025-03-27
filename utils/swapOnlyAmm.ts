@@ -33,7 +33,7 @@ import { TOKEN_PROGRAM_ID, getAssociatedTokenAddress, getMint } from '@solana/sp
 // import { logger } from '.';
 import {  TX_FEE } from '../constants';
 // import base58 from 'bs58';
-// import { BN } from 'bn.js';
+import { BN } from 'bn.js';
 
 type WalletTokenAccounts = Awaited<ReturnType<typeof getWalletTokenAccount>>
 type TestTxInputInfo = {
