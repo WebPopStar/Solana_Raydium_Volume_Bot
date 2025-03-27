@@ -125,7 +125,7 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
     // withdrawQueue: info.withdrawQueue.toString(),
     lpVault: info.lpVault.toString(),
     marketVersion: 3,
-    marketProgramId: info.marketProgramId.toString(),
+    // marketProgramId: info.marketProgramId.toString(),
     marketId: info.marketId.toString(),
     marketAuthority: Market.getAssociatedAuthority({ programId: info.marketProgramId, marketId: info.marketId }).publicKey.toString(),
     marketBaseVault: marketInfo.baseVault.toString(),
