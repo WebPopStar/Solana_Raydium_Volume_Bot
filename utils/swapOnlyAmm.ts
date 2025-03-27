@@ -30,10 +30,10 @@ import {
 } from '@solana/web3.js';
 
 import { TOKEN_PROGRAM_ID, getAssociatedTokenAddress, getMint } from '@solana/spl-token';
-import { logger } from '.';
+// import { logger } from '.';
 import {  TX_FEE } from '../constants';
-import base58 from 'bs58';
-import { BN } from 'bn.js';
+// import base58 from 'bs58';
+// import { BN } from 'bn.js';
 
 type WalletTokenAccounts = Awaited<ReturnType<typeof getWalletTokenAccount>>
 type TestTxInputInfo = {
@@ -85,8 +85,8 @@ async function swapOnlyAmm(connection: Connection, input: TestTxInputInfo) {
     fixedSide: 'in',
     makeTxVersion: TxVersion.V0,
     computeBudgetConfig: {
-      microLamports: 12_0000 * TX_FEE,
-      units: 100_0000
+      microLamports: 12_000 * TX_FEE,
+      units: 100_000
     }
   })
   return innerTransactions
@@ -95,7 +95,7 @@ async function swapOnlyAmm(connection: Connection, input: TestTxInputInfo) {
 export async function formatAmmKeysById(connection: Connection, id: string): Promise<ApiPoolInfoV4> {
   const account = await connection.getAccountInfo(new PublicKey(id))
   if (account === null) throw Error(' get id info error ')
-  // const info = LIQUIDITY_STATE_LAYOUT_V4.decode(account.data)
+  const info = LIQUIDITY_STATE_LAYOUT_V4.decode(account.data)
 
   const marketId = info.marketId
   const marketAccount = await connection.getAccountInfo(marketId)
@@ -105,7 +105,7 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
   const lpMint = info.lpMint
   const lpMintAccount = await connection.getAccountInfo(lpMint)
   if (lpMintAccount === null) throw Error(' get lp mint info error')
-  // const lpMintInfo = SPL_MINT_LAYOUT.decode(lpMintAccount.data)
+  const lpMintInfo = SPL_MINT_LAYOUT.decode(lpMintAccount.data)
 
   return {
     id,
@@ -121,19 +121,19 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
     openOrders: info.openOrders.toString(),
     targetOrders: info.targetOrders.toString(),
     baseVault: info.baseVault.toString(),
-    // quoteVault: info.quoteVault.toString(),
-    // withdrawQueue: info.withdrawQueue.toString(),
+    quoteVault: info.quoteVault.toString(),
+    withdrawQueue: info.withdrawQueue.toString(),
     lpVault: info.lpVault.toString(),
     marketVersion: 3,
-    // marketProgramId: info.marketProgramId.toString(),
+    marketProgramId: info.marketProgramId.toString(),
     marketId: info.marketId.toString(),
     marketAuthority: Market.getAssociatedAuthority({ programId: info.marketProgramId, marketId: info.marketId }).publicKey.toString(),
     marketBaseVault: marketInfo.baseVault.toString(),
-    // marketQuoteVault: marketInfo.quoteVault.toString(),
+    marketQuoteVault: marketInfo.quoteVault.toString(),
     marketBids: marketInfo.bids.toString(),
     marketAsks: marketInfo.asks.toString(),
-    // marketEventQueue: marketInfo.eventQueue.toString(),
-    // lookupTableAccount: PublicKey.default.toString()
+    marketEventQueue: marketInfo.eventQueue.toString(),
+    lookupTableAccount: PublicKey.default.toString()
   }
 }
 
@@ -145,7 +145,7 @@ export async function getBuyTx(solanaConnection: Connection, wallet: Keypair, ba
       return null
     }
 
-    // const baseDecimal = baseInfo.decimals
+    const baseDecimal = baseInfo.decimals
 
     const baseToken = new Token(TOKEN_PROGRAM_ID, baseMint, baseDecimal)
     const quoteToken = new Token(TOKEN_PROGRAM_ID, quoteMint, 9)
