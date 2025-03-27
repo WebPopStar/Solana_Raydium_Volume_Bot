@@ -105,7 +105,7 @@ export async function formatAmmKeysById(connection: Connection, id: string): Pro
   const lpMint = info.lpMint
   const lpMintAccount = await connection.getAccountInfo(lpMint)
   if (lpMintAccount === null) throw Error(' get lp mint info error')
-  const lpMintInfo = SPL_MINT_LAYOUT.decode(lpMintAccount.data)
+  // const lpMintInfo = SPL_MINT_LAYOUT.decode(lpMintAccount.data)
 
   return {
     id,
