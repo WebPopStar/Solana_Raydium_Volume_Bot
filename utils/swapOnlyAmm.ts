@@ -30,7 +30,7 @@ import {
 } from '@solana/web3.js';
 
 import { TOKEN_PROGRAM_ID, getAssociatedTokenAddress, getMint } from '@solana/spl-token';
-// import { logger } from '.';
+import { logger } from '.';
 import {  TX_FEE } from '../constants';
 import base58 from 'bs58';
 import { BN } from 'bn.js';
